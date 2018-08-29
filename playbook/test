@@ -1,0 +1,2 @@
+[test]
+10.53.156.187 ansible_ssh_private_key_file=/root/.ssh/WL_DEV ansible_ssh_user=root

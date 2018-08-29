@@ -1,0 +1,14 @@
+---
+
+
+- name : stop jar
+  shell : ps -ef |grep "{{ jarname }}"|grep -v "grep"|awk '{print$2}'| xargs kill -9
+  ignore_errors: True
+- name : clean files
+  file : path={{ item }} state=absent
+  with_items:
+      - "{{ jarpath }}{{ jar }}"
+- name : upload jar
+  copy : src={{ jar }} dest={{ jarpath }}{{ jar }} owner=cssuser group=cssgrp mode=0755
+- name : start jar
+  shell : chdir="{{ jarpath }}" su -c "nohup /usr/bin/java -jar {{ jar }} &" cssuser
