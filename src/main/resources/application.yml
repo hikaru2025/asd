@@ -30,8 +30,8 @@ server:
   port: 9016
 #文件传输配置
 fileService:
-  fileUrl: http://localhost:9016/
-  rootDir: /opt/data
+  fileUrl: http://10.53.156.187:9016/
+  rootDir: /opt/file
   fileType: txt,png,PNG,jpg,JPG,jpeg,gif,GIF,html,xls,xlsx,pdf,doc,docx
   fileSize: 104857600
 #日志配置
@@ -39,15 +39,14 @@ logging:
   config:  classpath:log/logback-spring.xml
 #公钥和渠道号
 filetransfer:
-  channel: AOS_RHJK
-  publickey:  MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDRI2JkGHj9E87aLSsDo6eBEbWV
-              bXaO0GBXhpcjAqXLBNvhK6tPBLgHPlzmifOvsZg6SMSIyMaAwYCkzSSGyYy7tH8U
-              O74gZecKerp+mXZNN1PC4o/oeYMQcbhk4qgK8bOq90fwwqeol5tCURAAqFkt9i/a
-              PjKiZ/+RoAeRx1g3YwIDAQAB
+  channel: CHN_WDD_0001
+  publickey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvppjMwFkHYnA3dkVa1xQtIojSdFpGZQ1eu79f
+             5DXCne3e62KwPyeqJGy0eGMLHpsnO9cwDCPM4gco5DBLJa2vyByT/OC/RAED9WKFS+bYjJgZQXr7
+             AoI16HobjifsiPT7zVCShg7dl/bD0baT1FMpf3EjjV+RFHb9HdSUdhnWgwIDAQAB
 #MQ producer
 hsjry:
   mq:
-    namesrvAddr:  localhost:9876
+    namesrvAddr:  10.53.156.243:9876
     contracttransfer:
       group:  wdd_contract_file
       topic:  wdd_contract_file

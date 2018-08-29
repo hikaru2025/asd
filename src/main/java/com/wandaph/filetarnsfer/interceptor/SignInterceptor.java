@@ -62,7 +62,7 @@ public class SignInterceptor implements HandlerInterceptor {
 
             try {
                 //开始验签
-                log.info("文件上传参数验签：{}",data);
+                log.info("文件上传参数验签。。。。。。");
 
                 if(!FileTransferUtils.checkSign(data,sign,publickey)){
 
