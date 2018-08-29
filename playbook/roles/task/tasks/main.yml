@@ -11,4 +11,4 @@
 - name : upload jar
   copy : src={{ jar }} dest={{ jarpath }}{{ jar }} owner=cssuser group=cssgrp mode=0755
 - name : start jar
-  shell : chdir="{{ jarpath }}" su -c "nohup /usr/bin/java -jar {{ jar }} &" cssuser
+  shell : chdir="{{ jarpath }}" su -c "./springboot.sh start {{ jarname }} &" cssuser
