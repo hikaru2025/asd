@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 合同文件传输 -->
+<!--    <bean id="ContractTransferMessageConsumer" class="com.wandaph.filetarnsfer.rocketmq.consumer.ContractTransferMessageConsumer" />
+    <bean id="ContractTransferConsumer" class="com.hsjry.mq.rocketmq.RocketMqSpringPushConsumer"
+          init-method="start" destroy-method="shutdown">
+        <property name="namesrvAddr" value="${hsjry.mq.namesrvAddr}" />
+        <property name="consumerGroup" value="${hsjry.mq.contracttransfer.group}" />
+        <property name="topic" value="${hsjry.mq.contracttransfer.topic}" />
+        <property name="tags" value="${hsjry.mq.contracttransfer.tags}" />
+        <property name="messageListenerMap">
+            <map>
+                <entry key="${hsjry.mq.contracttransfer.topic}|${hsjry.mq.contracttransfer.tags}"
+                       value-ref="ContractTransferMessageConsumer" />
+            </map>
+        </property>
+        <property name="consumeThreadNums" value="${consume.thread.max.mums}" />
+    </bean>-->
+</beans>
