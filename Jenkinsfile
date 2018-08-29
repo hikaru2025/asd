@@ -8,7 +8,7 @@ node {
 	}
 
 	stage('Packaging') {
-		sh '/data/maven/bin/mvn clean package -DskipTests'
+		sh '/data/maven/bin/mvn clean package -DskipTests -U'
 		archiveArtifacts 'target/*.jar'
 	}
 
@@ -17,6 +17,6 @@ node {
 	}
 
 	stage('Deployment') {
-		//sh '/usr/bin/ansible-playbook -i playbook/test playbook/site.yml'
+		sh '/usr/bin/ansible-playbook -i playbook/test playbook/site.yml'
 	}
 }
