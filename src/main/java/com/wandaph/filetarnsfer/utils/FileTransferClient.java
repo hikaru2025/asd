@@ -105,8 +105,8 @@ public class FileTransferClient {
         try {
             File file = new File(filePath);
             fis = new FileInputStream(file);
-            bos = new ByteArrayOutputStream(1000);
-            byte[] b = new byte[1000];
+            bos = new ByteArrayOutputStream(1024);
+            byte[] b = new byte[1024];
             int n;
             while ((n = fis.read(b)) != -1) {
                 bos.write(b, 0, n);
