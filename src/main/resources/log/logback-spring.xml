@@ -6,7 +6,7 @@
 
 <configuration scan="true" scanPeriod="10 seconds">
     <property name="USER_HOME" value="../logs/" />
-    <property name="FILE_NAME" value="STANDARD-LOAN-API" />
+    <property name="FILE_NAME" value="wandaph-filetransfer" />
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
