@@ -46,7 +46,7 @@ filetransfer:
 #MQ producer
 hsjry:
   mq:
-    namesrvAddr:  10.53.156.243:9876
+    namesrvAddr:  10.53.156.163:9876;10.53.156.164:9876
     contracttransfer:
       group:  wdd_contract_file
       topic:  wdd_contract_file

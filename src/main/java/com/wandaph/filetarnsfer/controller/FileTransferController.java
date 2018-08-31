@@ -45,7 +45,7 @@ public class FileTransferController {
             return FileTransferUtils.handleFail("请求参数异常",FileTransferStatusEnums.PARAM_MISS.getCode(),FileTransferStatusEnums.PARM_ERR.getDesc(),null);
         }
 
-        log.info("合同传输请求参数入参{}",data);
+        log.info("合同传输请求参数入参{}");
         //参数解析
         FileTransferRequest fileTransferRequest = null;
         try {
@@ -87,7 +87,7 @@ public class FileTransferController {
                 StringUtils.isEmpty(sign)){
             return FileTransferUtils.handleFail("请求参数异常",FileTransferStatusEnums.PARAM_MISS.getCode(),FileTransferStatusEnums.PARM_ERR.getDesc(),null);
         }
-
+        log.info("合同传输请求参数入参{}");
         //参数解析
         FileTransferRequest fileTransferRequest = null;
         try {
