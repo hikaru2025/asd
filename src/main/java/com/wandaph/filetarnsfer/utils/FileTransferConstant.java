@@ -11,6 +11,7 @@ public class FileTransferConstant {
     public static final String FILE_SAVE_PREFIX = "WDD_";//文件名前缀
     public static final String MSG_TOPIC = "wdd_contract_file";//消息主题
     public static final String MSG_TAGS = "952";//消息标签
-
+    public static final String PUBLIC_NAME_SUFF = "_publickey";//公钥名称后缀
+    public static final String PUBLIC_NAME_PREFIX = "filetransfer.";//公钥名称前缀
 
 }

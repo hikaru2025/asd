@@ -3,16 +3,12 @@ package com.wandaph.filetarnsfer.utils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringValueResolver;
 
 import java.util.Map;
 
-/**
- * 提供手动取得Spring管理Bean更简洁的方法。
- * 不依赖ActionContext便于在各应用层中使用,在xml文件中配置此bean，
- * 以便让Spring启动时自动为我们注入ApplicationContext对象
- * 
- * @author mawei
- */
+@Component
 public class ApplicationContextUtil implements ApplicationContextAware {
 
 	private static ApplicationContext context = null;
@@ -57,4 +53,5 @@ public class ApplicationContextUtil implements ApplicationContextAware {
 	public static ApplicationContext getContext() {
 		return ApplicationContextUtil.context;
 	}
+
 }

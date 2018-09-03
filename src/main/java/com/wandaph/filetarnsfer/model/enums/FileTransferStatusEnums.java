@@ -12,7 +12,8 @@ public enum FileTransferStatusEnums {
     MSG_SEND_FAIL("0007","消息发送失败","消息发送提示"),
     PARM_PARSE_ERR("0008","参数解析错误","入参错误提示"),
     CHANNEL_NOEXIST("0009","渠道号不存在","入参错误提示"),
-    PUBLICKEY_NOEXIST("0010","公钥不存在，请提供公钥给调用方","验签提示");
+    PUBLICKEY_NOEXIST("0010","公钥不存在，请提供公钥给调用方","验签提示"),
+    CHANNEL_TO_PUBLICKEY("0011","渠道编号匹配公钥错误","渠道匹配公钥");
 
 
 

@@ -2,11 +2,13 @@ package com.wandaph.filetarnsfer.interceptor;
 
 import com.hsjry.lang.log.Log;
 import com.hsjry.lang.log.TenantLog;
+import com.wandaph.filetarnsfer.config.FiletransferConfig;
+import com.wandaph.filetarnsfer.model.entity.Filetransfer;
 import com.wandaph.filetarnsfer.model.enums.FileTransferStatusEnums;
-import com.wandaph.filetarnsfer.utils.FileTransferUtils;
-import com.wandaph.filetarnsfer.utils.JsonUtil;
-import org.springframework.beans.factory.annotation.Value;
+import com.wandaph.filetarnsfer.utils.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * @author lipeng
@@ -23,39 +26,50 @@ import java.io.PrintWriter;
  * @date 2018/8/248:22
  */
 @Component
-public class WddContractSignInterceptor implements HandlerInterceptor {
+public class SignInterceptor implements HandlerInterceptor {
 
-    private static final Log log = TenantLog.get(WddContractSignInterceptor.class);
+    private static final Log log = TenantLog.get(SignInterceptor.class);
 
-    @Value("${filetransfer.wdd.channel}")
-    private String channel;
-
-    @Value("${filetransfer.wdd.chn_wdd_0001_publickey}")
-    private String publickey;
-
+    @Autowired
+    private FiletransferConfig filetransferConfig;
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
 
          String data = (String)httpServletRequest.getParameter("data");
-         String channel1 = (String)httpServletRequest.getParameter("channel");
+         String channel = (String)httpServletRequest.getParameter("channel");
          String requestTime = (String)httpServletRequest.getParameter("requestTime");
          String sign = (String)httpServletRequest.getParameter("sign");
 
          //参数检查
          if(StringUtils.isEmpty(data) ||
-                 StringUtils.isEmpty(channel1) ||
+                 StringUtils.isEmpty(channel) ||
                  StringUtils.isEmpty(requestTime) ||
                  StringUtils.isEmpty(sign)){
              response(httpServletResponse,"参数异常",FileTransferStatusEnums.PARM_ERR.getCode(),FileTransferStatusEnums.PARM_ERR.getDesc(),null);
              return false;
          }
 
-         //校验渠道编号
-         if(!channel1.equals(channel)){
-             response(httpServletResponse,"渠道编号不匹配",FileTransferStatusEnums.CHANNEL_NOEXIST.getCode(),FileTransferStatusEnums.CHANNEL_NOEXIST.getDesc(),null);
-             return false;
-         }
+         //通过渠道编号找对应的公钥
+        List<Filetransfer> filetransfers = filetransferConfig.getFiletransfer();
+        String publickey = null;
+        if(!CollectionUtils.isEmpty(filetransfers)){
+
+             for (Filetransfer filetransfer:filetransfers) {
+
+                 if(filetransfer != null){
+
+                     if(channel.equals(filetransfer.getChannel())){
+                         publickey = filetransfer.getPublickey();
+                         break;
+                     }
+                 }
+             }
+             if (StringUtils.isEmpty(publickey)){
+                 response(httpServletResponse,"渠道编号匹配公钥错误",FileTransferStatusEnums.CHANNEL_TO_PUBLICKEY.getCode(),FileTransferStatusEnums.CHANNEL_TO_PUBLICKEY.getDesc(),null);
+                 return  false;
+             }
+        }
 
         try {
             //开始验签

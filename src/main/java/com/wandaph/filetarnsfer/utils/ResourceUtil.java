@@ -28,16 +28,4 @@ public class ResourceUtil {
         }
         return null;
     }
-
-    public static String getTenantId(){
-        return getValue("tenantId");
-    }
-    
-    public static String getChannelNo(){
-        return getValue("channelNo");
-    }
-
-    public static String getJdchannelno(){
-        return getValue("jd.channelno");
-    }
 }
