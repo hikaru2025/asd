@@ -3,20 +3,9 @@ spring:
   application:
     name: wandaph-filetransfer
   datasource:
-    # DEV
     url: jdbc:mysql://10.53.156.240:3306/loanpublic?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&useSSL=true
     password: wdphdev2018
     username: dev
-    # SIT
-#    url: jdbc:mysql://10.214.169.130:3306/api_test?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
-#    password: Loan@hsyr1
-#    username: loan
-
-    #SIT-NEW
-#    url: jdbc:mysql://10.53.156.159:3306/api_test?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
-#    password: rwDEV2018wdph
-#    username: devrw
-
     driver-class-name: com.mysql.jdbc.Driver
     maximumPoolSize: 20
     connectionTimeout: 30000
@@ -30,8 +19,8 @@ server:
   port: 9016
 #文件传输配置
 fileService:
-  fileUrl: http://10.53.156.187:9016/
-  rootDir: /opt/file
+  fileUrl: http://10.214.179.181/attachFile
+  rootDir: /cssdata/
   fileType: txt,png,PNG,jpg,JPG,jpeg,gif,GIF,html,xls,xlsx,pdf,doc,docx
   fileSize: 104857600
 #日志配置
@@ -46,7 +35,7 @@ filetransfer:
 #MQ producer
 hsjry:
   mq:
-    namesrvAddr:  10.53.156.163:9876;10.53.156.164:9876
+    namesrvAddr:  10.214.179.124:9876;10.214.179.125:9876
     contracttransfer:
       group:  wdd_contract_file
       topic:  wdd_contract_file
