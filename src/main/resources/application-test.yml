@@ -1,0 +1,57 @@
+# 基础信息配置
+spring:
+  application:
+    name: wandaph-filetransfer
+  datasource:
+    # DEV
+    url: jdbc:mysql://10.53.156.240:3306/loanpublic?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&useSSL=true
+    password: wdphdev2018
+    username: dev
+    # SIT
+#    url: jdbc:mysql://10.214.169.130:3306/api_test?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
+#    password: Loan@hsyr1
+#    username: loan
+
+    #SIT-NEW
+#    url: jdbc:mysql://10.53.156.159:3306/api_test?tinyInt1isBit=false&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
+#    password: rwDEV2018wdph
+#    username: devrw
+
+    driver-class-name: com.mysql.jdbc.Driver
+    maximumPoolSize: 20
+    connectionTimeout: 30000
+    pool-prepared-statements: true
+    max-open-prepared-statements: 250
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  port: 9016
+#文件传输配置
+fileService:
+  fileUrl: http://10.53.156.187:9016/
+  rootDir: /opt/file
+  fileType: txt,png,PNG,jpg,JPG,jpeg,gif,GIF,html,xls,xlsx,pdf,doc,docx
+  fileSize: 104857600
+#日志配置
+logging:
+  config:  classpath:log/logback-spring.xml
+#公钥和渠道号
+filetransfer:
+  channel: CHN_WDD_0001
+  publickey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvppjMwFkHYnA3dkVa1xQtIojSdFpGZQ1eu79f
+             5DXCne3e62KwPyeqJGy0eGMLHpsnO9cwDCPM4gco5DBLJa2vyByT/OC/RAED9WKFS+bYjJgZQXr7
+             AoI16HobjifsiPT7zVCShg7dl/bD0baT1FMpf3EjjV+RFHb9HdSUdhnWgwIDAQAB
+#MQ producer
+hsjry:
+  mq:
+    namesrvAddr:  10.53.156.163:9876;10.53.156.164:9876
+    contracttransfer:
+      group:  wdd_contract_file
+      topic:  wdd_contract_file
+      tags: 952
+consume:
+  thread:
+    max:
+      mums: 30
