@@ -12,7 +12,7 @@
         <encoder>
             <!-- <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg %n</pattern> -->
             <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %thread %logger{35} %level - %msg %n</pattern>-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-30logger{0}] %level - %msg %n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %thread %logger{35} %level - %msg %n</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
