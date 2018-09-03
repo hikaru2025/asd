@@ -37,10 +37,11 @@ fileService:
 #日志配置
 logging:
   config:  classpath:log/logback-spring.xml
-#公钥和渠道号
+#万达贷文件传输公钥和渠道号
 filetransfer:
-  channel: CHN_WDD_0001
-  publickey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvppjMwFkHYnA3dkVa1xQtIojSdFpGZQ1eu79f
+  wdd:
+    channel: CHN_WDD_0001
+    chn_wdd_0001_publickey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvppjMwFkHYnA3dkVa1xQtIojSdFpGZQ1eu79f
              5DXCne3e62KwPyeqJGy0eGMLHpsnO9cwDCPM4gco5DBLJa2vyByT/OC/RAED9WKFS+bYjJgZQXr7
              AoI16HobjifsiPT7zVCShg7dl/bD0baT1FMpf3EjjV+RFHb9HdSUdhnWgwIDAQAB
 #MQ producer

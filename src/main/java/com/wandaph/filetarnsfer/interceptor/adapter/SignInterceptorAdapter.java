@@ -1,6 +1,6 @@
 package com.wandaph.filetarnsfer.interceptor.adapter;
 
-import com.wandaph.filetarnsfer.interceptor.SignInterceptor;
+import com.wandaph.filetarnsfer.interceptor.WddContractSignInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -17,11 +17,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class SignInterceptorAdapter extends WebMvcConfigurerAdapter{
 
     @Autowired
-    private SignInterceptor signInterceptor;
+    private WddContractSignInterceptor wddContractSignInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        registry.addInterceptor(signInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(wddContractSignInterceptor).addPathPatterns("/file/upload/**");
     }
 }
