@@ -28,6 +28,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    database: MYSQL
 server:
   port: 9016
 #文件传输配置
