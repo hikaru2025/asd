@@ -11,7 +11,7 @@ import java.util.Date;
  * @date 2018/8/248:32
  */
 @Entity
-@Table(name="contract_transfer")
+@Table(name="file_contract_transfer")
 public class ContractTransfer {
 
     @Id
@@ -28,11 +28,14 @@ public class ContractTransfer {
     @Column(name = "contract_url")
     private String contractUrl;
 
-    @Column(name = "createtime")
+    @Column(name = "created")
     private Date createtime;
 
-    @Column(name = "updatetime")
+    @Column(name = "updated")
     private Date updatetime;
+
+    @Column(name = "deleted")
+    private Integer deleted;
 
     @Column(name = "publickey")
     private String publickey;
@@ -99,6 +102,14 @@ public class ContractTransfer {
         this.contractUrl = contractUrl;
         this.createtime = createtime;
         this.updatetime = updatetime;
+    }
+
+    public Integer getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
     }
 
     public ContractTransfer() {
