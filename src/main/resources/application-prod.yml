@@ -41,6 +41,8 @@ fileService:
 #日志配置
 logging:
   config:  classpath:log/logback-spring.xml
+wdphlogger:
+  path: /data/logs/wandaph-filetransfer
 #万达贷文件传输公钥和渠道号数组
 filetransferConfig:
   filetransfer[0]:
